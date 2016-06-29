@@ -1,0 +1,126 @@
+{
+	"toJSON": true,
+	"extraProperties": {
+		"version": "2",
+		"classes": {
+			"Profil": {
+				"panelColor": "#7F7F7F",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 25,
+						"Y": 20
+					}
+				}
+			},
+			"Votes": {
+				"panelColor": "#8DB3E2",
+				"panel": {
+					"isOpen": "true",
+					"pathVisible": true,
+					"position": {
+						"X": 357,
+						"Y": 36
+					}
+				}
+			}
+		},
+		"model": {
+			"scriptMode": "manual",
+			"workspaceLeft": 0,
+			"workspaceTop": 0,
+			"lastScriptLocation": {
+				"Votes": {
+					"method": "Votes/Votes-methods.js"
+				}
+			}
+		}
+	},
+	"dataClasses": [
+		{
+			"name": "Profil",
+			"className": "Profil",
+			"collectionName": "ProfilCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "avatar",
+					"kind": "storage",
+					"scope": "public",
+					"type": "image"
+				},
+				{
+					"name": "popularity",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "VotesCollection",
+					"reversePath": true,
+					"path": "profil"
+				}
+			]
+		},
+		{
+			"name": "Votes",
+			"className": "Votes",
+			"collectionName": "VotesCollection",
+			"scope": "public",
+			"attributes": [
+				{
+					"name": "ID",
+					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
+					"type": "long",
+					"primKey": true
+				},
+				{
+					"name": "date",
+					"kind": "storage",
+					"scope": "public",
+					"type": "date",
+					"simpleDate": false
+				},
+				{
+					"name": "ip",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "profil",
+					"kind": "relatedEntity",
+					"scope": "public",
+					"type": "Profil",
+					"path": "Profil"
+				}
+			],
+			"methods": [
+				{
+					"name": "voteForMe",
+					"applyTo": "dataClass",
+					"scope": "public",
+					"from": "$mainModel.Votes.methods.voteForMe",
+					"userDefined": true
+				}
+			]
+		}
+	],
+	"type": []
+}
